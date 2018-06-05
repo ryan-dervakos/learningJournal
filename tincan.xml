@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<tincan xmlns="http://projecttincan.com/tincan.xsd">
+    <activities>
+        <activity id="http://www.taolin.co.uk/program/ilead/course/generic/learning-object/generic" type="http://adlnet.gov/expapi/activities/course">
+            <name>Learning journal</name>
+            <description lang="en-US">Learning journal</description>
+            <launch lang="en-us">index.html</launch>
+        </activity>
+    </activities>
+</tincan>

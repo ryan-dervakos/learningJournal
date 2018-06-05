@@ -1,0 +1,808 @@
+body{
+	background: #f27524;
+	color: #676767;
+	font-size:18px;
+	/*font-family: "Nunito","Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+	font-family: Calibri;
+}
+
+h1,h2,h3,h4,h5{
+	color:rgb(70, 70, 70);
+}
+
+hr{
+	    border-top: 2px dashed #d0d0d0;
+}
+
+input[type=range] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 100%; /* Specific width is required for Firefox. */
+  background: transparent; /* Otherwise white in Chrome */
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+
+  /* Hides the slider so custom styles can be added */
+  background: transparent; 
+  border-color: transparent;
+  color: transparent;
+}
+
+/* Special styling for WebKit/Blink */
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+  margin-top: -14px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; /* Add cool effects to your sliders! */
+}
+
+/* All the same stuff for Firefox */
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+/* All the same stuff for IE */
+input[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+} 
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #3071a9;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #367ebd;
+}
+
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #3071a9;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #2a6495;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #3071a9;
+}
+input[type=range]::-ms-fill-upper {
+  background: #3071a9;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #367ebd;
+}
+
+   
+
+textarea.form-control{
+    background: #eeeeee;
+    color: #424242;
+    font-size: 18px;
+    border-radius: 0px;
+    font-style: italic;
+    border: 1px solid #e2e2e2;
+}
+
+.form-control:focus {
+    border-color: #f27524;
+    outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.vertical-center{
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+  display: flex;
+  align-items: center;
+}
+
+.taolin-img{
+	    border: 3px solid #f27524;
+    border-radius: 0px;
+}
+
+.taolinPanel{
+	background: #fff;
+    padding: 0 16px 6px 16px;
+    /*border:1px solid #b95b1d;*/
+    /*background: #f7f7f7;*/
+    /*padding: 0 16px 6px 16px;*/
+}
+
+.btn{
+	border-radius: 0px;
+}
+
+.taolinBtn{
+	background: #403f3f;
+	color: #f27524;
+}
+
+.taolinBtn:hover{
+	color: #fda064;
+}
+
+.taolinBtn:active{
+	color: #fff;
+}
+
+.taolinBtn:focus{
+	color: yellow;
+}
+
+.slider-handle {
+    position: absolute;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    background-color: #f27524!important;
+    background-image: -webkit-linear-gradient(top,#f27524 0,#0480be 100%)!important;
+    background-image: -o-linear-gradient(top,#149bdf 0,#0480be 100%)!important;
+    background-image: linear-gradient(to bottom,#f27524 0,#ff8435 100%)!important;
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff149bdf',endColorstr='#ff0480be',GradientType=0)!important;
+    filter: none;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2),0 1px 2px rgba(0,0,0,.05)!important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.2),0 1px 2px rgba(0,0,0,.05)!important;
+    border: 0 solid transparent;
+}
+
+.slider-selection.tick-slider-selection {
+    background-image: -webkit-linear-gradient(top,#ffa66d 0,#f27524 100%)!important;
+    background-image: -o-linear-gradient(top,#89cdef 0,#81bfde 100%)!important;
+    background-image: linear-gradient(to bottom,#ffa86f 0,#ffa66d 100%)!important;
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff89cdef',endColorstr='#ff81bfde',GradientType=0);
+}
+
+.slider-tick.in-selection {
+    background-image: -webkit-linear-gradient(top,#ffa66d 0,#f27524 100%)!important;
+    background-image: -o-linear-gradient(top,#89cdef 0,#81bfde 100%)!important;
+    background-image: linear-gradient(to bottom,#ffa86f 0,#ffa66d 100%)!important;
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff89cdef',endColorstr='#ff81bfde',GradientType=0);
+    opacity: 1;
+}
+
+.choiceBtns.active, .choiceBtns:active{
+    box-shadow: inset 1px 1px 11px rgba(0, 0, 0, 0.24)!important;
+    color: #f7f7f7!important;
+    background: #5f5f5f!important;
+    /*font-weight: bold;*/
+}
+
+.choiceBtns.active.focus, .choiceBtns.active:focus, .choiceBtns:active.focus, .choiceBtns:active:focus{
+  outline:none;
+}
+
+.btn.active.focus, .btn.active:focus, .btn:active.focus, .btn:active:focus{
+  outline:none;
+}
+
+
+/*MEDIA QUERIES*/
+
+@media only screen and (max-width: 993px){
+	  	#answerACont,#answerBCont{
+  		     font-size: 17px;
+  	}
+	.choiceBtns{
+	    width: 100%;
+    	    font-size: 14px;
+}
+	.taolinHeader{
+		    font-size: 29px;
+	}
+
+	.vertical-center{ 
+  display: block;
+ 
+}
+
+	.taolinText{
+		font-size:15;
+	}
+}
+
+@media only screen and (max-width: 640px){
+	  	#answerACont,#answerBCont{
+  		     font-size: 17px;
+  	}
+	.choiceBtns{
+	    width: 100%;
+    font-size: 13px;
+}
+	.taolinHeader{
+		    font-size: 29px;
+	}
+
+	.vertical-center{ 
+  display: block;
+ 
+}
+
+	.taolinText{
+		font-size:15;
+	}
+}
+
+
+/* ----------- iPhone 4 and 4S ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+  		  	#answerACont,#answerBCont{
+  		     font-size: 17px;
+  	}
+  		.choiceBtns{
+	  width: 100%;
+    font-size: 13px;
+}
+	.taolinHeader{
+		    font-size: 29px;
+	}
+
+	.vertical-center{ 
+  display: block;
+ 
+}
+
+	.taolinText{
+		font-size:15;
+	}
+}
+
+/* Portrait */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+  		  	#answerACont,#answerBCont{
+  		     font-size: 17px;
+  	}
+  		.choiceBtns{
+	  width: 100%;
+    font-size: 13px;
+}
+	.taolinHeader{
+		    font-size: 29px;
+	}
+
+	.vertical-center{ 
+  display: block;
+ 
+}
+
+	.taolinText{
+		font-size:15;
+	}
+}
+
+/* Landscape */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
+  		  	#answerACont,#answerBCont{
+  		     font-size: 17px;
+  	}
+  		.choiceBtns{
+	  width: 100%;
+    font-size: 13px;
+}
+	.taolinHeader{
+		    font-size: 29px;
+	}
+
+	.vertical-center{ 
+  display: block;
+ 
+}
+
+	.taolinText{
+		font-size:15;
+	}
+
+}
+
+/* ----------- iPhone 5 and 5S ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+  		  	#answerACont,#answerBCont{
+  		     font-size: 17px;
+  	}
+  		.choiceBtns{
+	  width: 100%;
+    font-size: 13px;
+}
+	.taolinHeader{
+		    font-size: 29px;
+	}
+
+	.vertical-center{ 
+  display: block;
+ 
+}
+
+	.taolinText{
+		font-size:15;
+	}
+
+}
+
+/* Portrait */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+  		  	#answerACont,#answerBCont{
+  		     font-size: 17px;
+  	}
+  		.choiceBtns{
+	  width: 100%;
+    font-size: 13px;
+}
+	.taolinHeader{
+		    font-size: 29px;
+	}
+
+	.vertical-center{ 
+  display: block;
+ 
+}
+
+	.taolinText{
+		font-size:15;
+	}
+}
+
+/* Landscape */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
+	  	#answerACont,#answerBCont{
+  		     font-size: 17px;
+  	}
+	.choiceBtns{
+	  width: 100%;
+    font-size: 13px;
+}
+	.taolinHeader{
+		    font-size: 29px;
+	}
+
+	.vertical-center{ 
+  display: block;
+ 
+}
+
+	.taolinText{
+		font-size:15;
+	}
+}
+
+/* ----------- iPhone 6 ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2) { 
+	  	#answerACont,#answerBCont{
+  		     font-size: 17px;
+  	}
+	.choiceBtns{
+	  width: 100%;
+    font-size: 13px;
+}
+	.taolinHeader{
+		    font-size: 29px;
+	}
+
+	.vertical-center{ 
+  display: block;
+ 
+}
+
+	.taolinText{
+		font-size:15;
+	}
+}
+
+/* Portrait */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) { 
+	  	#answerACont,#answerBCont{
+  		     font-size: 17px;
+  	}
+	.choiceBtns{
+	  width: 100%;
+    font-size: 13px;
+}
+	.taolinHeader{
+		    font-size: 29px;
+	}
+
+	.vertical-center{ 
+  display: block;
+ 
+}
+
+	.taolinText{
+		font-size:15;
+	}
+}
+
+/* Landscape */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) { 
+	  	#answerACont,#answerBCont{
+  		     font-size: 17px;
+  	}
+	.choiceBtns{
+	  width: 100%;
+    font-size: 13px;
+}
+	.taolinHeader{
+		    font-size: 29px;
+	}
+
+	.vertical-center{ 
+  display: block;
+ 
+}
+
+	.taolinText{
+		font-size:15;
+	}
+}
+
+/* ----------- iPhone 6+ ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+  and (min-device-width: 414px) 
+  and (max-device-width: 736px) 
+  and (-webkit-min-device-pixel-ratio: 3) { 
+	  	#answerACont,#answerBCont{
+  		     font-size: 17px;
+  	}
+	.choiceBtns{
+	  width: 100%;
+    font-size: 13px;
+}
+	.taolinHeader{
+		    font-size: 29px;
+	}
+
+	.vertical-center{ 
+  display: block;
+ 
+}
+
+	.taolinText{
+		font-size:15;
+	}
+}
+
+/* Portrait */
+@media only screen 
+  and (min-device-width: 414px) 
+  and (max-device-width: 736px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: portrait) { 
+	  	#answerACont,#answerBCont{
+  		     font-size: 17px;
+  	}
+	.choiceBtns{
+	  width: 100%;
+    font-size: 13px;
+}
+	.taolinHeader{
+		    font-size: 29px;
+	}
+
+	.vertical-center{ 
+  display: block;
+ 
+}
+
+	.taolinText{
+		font-size:15;
+	}
+}
+
+/* Landscape */
+@media only screen 
+  and (min-device-width: 414px) 
+  and (max-device-width: 736px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: landscape) { 
+	  	#answerACont,#answerBCont{
+  		     font-size: 17px;
+  	}
+	.choiceBtns{
+	  width: 100%;
+    font-size: 13px;
+}
+	.taolinHeader{
+		    font-size: 29px;
+	}
+
+	.vertical-center{ 
+  display: block;
+ 
+}
+
+	.taolinText{
+		font-size:15;
+	}
+}
+
+
+/* ----------- Galaxy S3 ----------- */
+
+/* Portrait and Landscape */
+@media screen 
+  and (device-width: 320px) 
+  and (device-height: 640px) 
+  and (-webkit-device-pixel-ratio: 2) {
+  	#answerACont,#answerBCont{
+  		     font-size: 17px;
+  	}
+.choiceBtns{
+	 	    width: 100%;
+        font-size: 14px;
+}
+	.taolinHeader{
+		    font-size: 29px;
+	}
+
+	.vertical-center{ 
+  display: block;
+ 
+}
+
+	.taolinText{
+		font-size:15;
+	}
+}
+
+/* Portrait */
+@media screen 
+  and (device-width: 320px) 
+  and (device-height: 640px) 
+  and (-webkit-device-pixel-ratio: 2) 
+  and (orientation: portrait) {
+  	#answerACont,#answerBCont{
+  		     font-size: 17px;
+  	}
+.choiceBtns{
+	 	    width: 100%;
+        font-size: 14px;
+}
+	.taolinHeader{
+		    font-size: 29px;
+	}
+
+	.vertical-center{ 
+  display: block;
+ 
+}
+
+	.taolinText{
+		font-size:15;
+	}
+}
+
+/* Landscape */
+@media screen 
+  and (device-width: 320px) 
+  and (device-height: 640px) 
+  and (-webkit-device-pixel-ratio: 2) 
+  and (orientation: landscape) {
+  	#answerACont,#answerBCont{
+  		     font-size: 17px;
+  	}
+.choiceBtns{
+	 	    width: 100%;
+        font-size: 14px;
+}
+	.taolinHeader{
+		    font-size: 29px;
+	}
+
+	.vertical-center{ 
+  display: block;
+ 
+}
+
+	.taolinText{
+		font-size:15;
+	}
+}
+
+/* ----------- Galaxy S4 ----------- */
+
+/* Portrait and Landscape */
+@media screen 
+  and (device-width: 320px) 
+  and (device-height: 640px) 
+  and (-webkit-device-pixel-ratio: 3) {
+  	#answerACont,#answerBCont{
+  		     font-size: 17px;
+  	}
+.choiceBtns{
+	 	    width: 100%;
+        font-size: 14px;
+}
+	.taolinHeader{
+		    font-size: 29px;
+	}
+
+	.vertical-center{ 
+  display: block;
+ 
+}
+
+	.taolinText{
+		font-size:15;
+	}
+}
+
+/* Portrait */
+@media screen 
+  and (device-width: 320px) 
+  and (device-height: 640px) 
+  and (-webkit-device-pixel-ratio: 3) 
+  and (orientation: portrait) {
+  	#answerACont,#answerBCont{
+  		     font-size: 17px;
+  	}
+.choiceBtns{
+	 	    width: 100%;
+        font-size: 14px;
+}
+	.taolinHeader{
+		    font-size: 29px;
+	}
+
+	.vertical-center{ 
+  display: block;
+ 
+}
+
+	.taolinText{
+		font-size:15;
+	}
+}
+
+/* Landscape */
+@media screen 
+  and (device-width: 320px) 
+  and (device-height: 640px) 
+  and (-webkit-device-pixel-ratio: 3) 
+  and (orientation: landscape) {
+  	#answerACont,#answerBCont{
+  		     font-size: 17px;
+  	}
+  	#answerACont,#answerBCont{
+  		     font-size: 17px;
+  	}
+.choiceBtns{
+	 	    width: 100%;
+        font-size: 14px;
+}
+	.taolinHeader{
+		    font-size: 29px;
+	}
+
+	.vertical-center{ 
+  display: block;
+ 
+}
+
+	.taolinText{
+		font-size:15;
+	}
+}
+
+/* ----------- Galaxy S5 ----------- */
+
+/* Portrait and Landscape */
+@media screen 
+  and (device-width: 360px) 
+  and (device-height: 640px) 
+  and (-webkit-device-pixel-ratio: 3) {
+  	#answerACont,#answerBCont{
+  		     font-size: 17px;
+  	}
+.choiceBtns{
+	 	    width: 100%;
+        font-size: 14px;
+}
+	.taolinHeader{
+		    font-size: 29px;
+	}
+
+	.vertical-center{ 
+  display: block;
+ 
+}
+
+	.taolinText{
+		font-size:15;
+	}
+}
