@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css?family=Nunito:400,700" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
   <!-- <link rel="stylesheet" type="text/css" href="css/chartist.css"> -->
   <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -22,36 +23,65 @@
   <![endif]-->
   <script type="text/javascript" src="tincan.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="src/dist/vue-tables.min.js"></script>
 </head>
 
 <body>
-<div class="container" id="">
-  <div class="row vertical-center" style="    background: #F1F1F1;">
+<div class="container-fluid" id="">
+  <div class="row" style="    background: #F1F1F1;">
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="taolinPanel">
         <div id="contentPanel" class="row">
-          <h1>Learning Journal</h1>
+          <h1 style="text-align: center;">Learning Journal</h1>
           <hr>
-          <p><span>Name: </span> <span>{{name}}</span></p>
-          <p><span>Date: </span> <span>Date</span></p>
-          <p><span>Module: </span> <span>
+          <div class="col-md-3 col-sm-12">
+            <p><span>Name: </span> <span>{{name}}</span></p>
+            <p><span>Date: </span> <span>{{date}}</span></p>
+            <p><span>Module: </span> <span>
             <select v-model="selectedModule">
             <option v-for="module in modules" v-bind:value="module.value">
               {{ module.text }}
             </option>
           </select>
           </span></p>
-          <p><span>Topic:  </span> <span>
+            <p><span>Topic:  </span> <span>
             <select v-model="selectedTopic" v-on:change="getandsetreflection">
             <option v-for="topic in topics" v-bind:value="topic.value">
               {{ topic.text }}
             </option>
           </select>
           </span></p>
-          <hr>
-          <p>My thoughts: <textarea v-model="message" id="refText" placeholder="add multiple lines"></textarea>
-          </p>
-          <button v-on:click="submit">Save</button>
+            <hr>
+            <textarea class="form-control" rows="3" v-model="message" id="refText" placeholder="My thoughts"></textarea>
+            <hr>
+            <button class="btn taolinBtn" v-on:click="submit">Save</button>
+          </div>
+          <div class="col-md-9 col-sm-12">
+            <table class="table table-bordered">
+              <thead>
+              <th>Date</th>
+              <th>Module</th>
+              <th>Topic</th>
+              <th>My thoughts</th>
+              </thead>
+              <tr v-for="reflection in reflections">
+                <td>{{reflection.date}}</td>
+                <td>{{reflection.module}}</td>
+                <td>{{reflection.topic}}</td>
+                <td>
+                  <div style="display: block;
+                  max-height: 100px;
+                  overflow: scroll;
+                  background: #f27524;
+                  padding: 8px;
+                  color: #f3f3f3;
+                  border-radius: 8px;">{{reflection.reflection}}
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+
         </div>
       </div>
     </div>
