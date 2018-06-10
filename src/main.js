@@ -118,7 +118,7 @@ window.onload = function () {
             data: {
                 name: actorName,
                 selectedModule: { text: 'How to Build a Superteam', value: 'htbas' },
-                date: today.toLocaleDateString(),
+                date: formatDate(today),
                 message: "",
                 reflections: [],
                 loading: true,
@@ -205,6 +205,21 @@ window.onload = function () {
         }
     );
 
+    function formatDate(date) {
+        var monthNames = [
+            "January", "February", "March",
+            "April", "May", "June", "July",
+            "August", "September", "October",
+            "November", "December"
+        ];
+
+        var day = date.getDate();
+        var monthIndex = date.getMonth();
+        var year = date.getFullYear();
+
+        return day + ' ' + monthNames[monthIndex] + ' ' + year;
+    }
+
     function sendEndStatement() {
         var endStatement = new TinCan.Statement({
             actor: {
@@ -240,7 +255,7 @@ window.onload = function () {
             if (obj[i].context.extensions["http://www.taolin.co.uk/program/ilead/course/generic/learning-object/generic/module"] !== undefined) {
                 reflection[i] = {
                     id: obj[i].id,
-                    date: obj[i].timestamp.substr(0, obj[i].timestamp.indexOf('T')),
+                    date: formatDate(new Date(obj[i].timestamp.substr(0, obj[i].timestamp.indexOf('T')))),
                     module: getModuleFromShortCode(obj[i].context.extensions["http://www.taolin.co.uk/program/ilead/course/generic/learning-object/generic/module"]),
                     topic: getTopicById(obj[i].context.extensions["http://www.taolin.co.uk/program/ilead/course/generic/learning-object/generic/topic"]),
                     reflection: obj[i].context.extensions["http://www.taolin.co.uk/program/ilead/course/generic/learning-object/generic/userInput"],

@@ -66,31 +66,41 @@
           </div>
           <div class="col-md-12 col-sm-12">
             <hr>
-            <div class="col-md-12">
-              <p><span>Name: </span> <span style="background: #f27524;
+            <div class="row">
+              <div class="col-md-6">
+                <p><span style="margin-right: 18px;">Name: </span> <span style="background: #f27524;
                   padding: 2px;
                   color: #f3f3f3;
                   border-radius: 8px;">{{name}}</span></p>
-              <p><span>Date: </span> <span style="background: #f27524;
+                <p><span style="margin-right: 26px;">Date: </span> <span style="background: #f27524;
                   padding: 2px;
                   color: #f3f3f3;
                   border-radius: 8px;">{{date}}</span></p>
-              <p><span>Module: </span> <span style="
+                <p><span style="margin-right: 5px;">Module: </span> <span style="
                   background: #f27524;
                   padding: 4px;
                   color: #f3f3f3;
                   border-radius: 8px;">
           {{ selectedModule.text }}
           </span></p>
-              <p><span>Topic:  </span> <span>
+                <p><span style="margin-right: 22px;">Topic:  </span> <span>
             <select v-model="selectedTopic" v-on:change="getandsetreflection">
             <option v-for="topic in topics" v-bind:value="topic.value">
               {{ topic.text }}
             </option>
           </select>
-          </span><span><img v-if="loading" src="img/loading.svg" width="45"></span>
+          </span>
+                  <span><img v-if="loading" src="img/loading.svg" width="45"></span>
               </p>
-              <hr>
+              </div>
+              <div class="col-md-6">
+                <img src="img/img.jpg" class="img img-responsive" width="450">
+              </div>
+              <div class="col-md-12">
+                <hr>
+              </div>
+            </div>
+            <div class="row">
               <textarea @focus="goToBottom" class="form-control" rows="3" v-model="message" id="refText" style="resize: none;"
                         placeholder="My thoughts"></textarea>
               <hr>
