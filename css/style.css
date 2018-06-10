@@ -2,8 +2,8 @@ body{
 	background: #f27524;
 	color: #676767;
 	font-size:18px;
-	/*font-family: "Nunito","Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;*/
-	font-family: Calibri;
+	font-family: "Nunito", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	/*font-family: Calibri;*/
 }
 
 h1,h2,h3,h4,h5{

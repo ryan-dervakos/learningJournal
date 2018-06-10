@@ -32,54 +32,71 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="taolinPanel">
         <div id="contentPanel" class="row">
-          <h1 style="text-align: center;">Learning Journal</h1>
-          <hr>
-          <div class="col-md-3 col-sm-12">
-            <p><span>Name: </span> <span>{{name}}</span></p>
-            <p><span>Date: </span> <span>{{date}}</span></p>
-            <p><span>Module: </span> <span>
-            <select v-model="selectedModule">
-            <option v-for="module in modules" v-bind:value="module.value">
-              {{ module.text }}
-            </option>
-          </select>
-          </span></p>
-            <p><span>Topic:  </span> <span>
-            <select v-model="selectedTopic" v-on:change="getandsetreflection">
-            <option v-for="topic in topics" v-bind:value="topic.value">
-              {{ topic.text }}
-            </option>
-          </select>
-          </span></p>
-            <hr>
-            <textarea class="form-control" rows="3" v-model="message" id="refText" placeholder="My thoughts"></textarea>
-            <hr>
-            <button class="btn taolinBtn" v-on:click="submit">Save</button>
-          </div>
-          <div class="col-md-9 col-sm-12">
-            <table class="table table-bordered">
+          <div class="col-md-12 col-sm-12" style="max-height: 303px;
+    overflow: auto;
+    background: whitesmoke;
+    padding: 10px;
+    margin-bottom: 11px;
+    font-size: 95%;">
+            <div v-if="loadingTable" class="text-center"><img src="img/loading.svg" width="100">
+              <p>Just a moment...</p></div>
+            <table v-if="!loadingTable" class="table table-bordered">
               <thead>
               <th>Date</th>
-              <th>Module</th>
               <th>Topic</th>
               <th>My thoughts</th>
               </thead>
               <tr v-for="reflection in reflections">
                 <td>{{reflection.date}}</td>
-                <td>{{reflection.module}}</td>
                 <td>{{reflection.topic}}</td>
                 <td>
                   <div style="display: block;
                   max-height: 100px;
+                  max-width: 660px;
                   overflow: scroll;
                   background: #f27524;
                   padding: 8px;
                   color: #f3f3f3;
-                  border-radius: 8px;">{{reflection.reflection}}
+                  border-radius: 8px;
+                  margin: 0 auto;">{{reflection.reflection}}
                   </div>
                 </td>
               </tr>
             </table>
+          </div>
+          <div class="col-md-12 col-sm-12">
+            <hr>
+            <div class="col-md-12">
+              <p><span>Name: </span> <span style="background: #f27524;
+                  padding: 2px;
+                  color: #f3f3f3;
+                  border-radius: 8px;">{{name}}</span></p>
+              <p><span>Date: </span> <span style="background: #f27524;
+                  padding: 2px;
+                  color: #f3f3f3;
+                  border-radius: 8px;">{{date}}</span></p>
+              <p><span>Module: </span> <span style="
+                  background: #f27524;
+                  padding: 4px;
+                  color: #f3f3f3;
+                  border-radius: 8px;">
+          {{ selectedModule.text }}
+          </span></p>
+              <p><span>Topic:  </span> <span>
+            <select v-model="selectedTopic" v-on:change="getandsetreflection">
+            <option v-for="topic in topics" v-bind:value="topic.value">
+              {{ topic.text }}
+            </option>
+          </select>
+          </span><span><img v-if="loading" src="img/loading.svg" width="45"></span>
+              </p>
+              <hr>
+              <textarea @focus="goToBottom" class="form-control" rows="3" v-model="message" id="refText" style="resize: none;"
+                        placeholder="My thoughts"></textarea>
+              <hr>
+              <button class="btn btn-lg taolinBtn " v-on:click="submit">Save</button>
+              <span v-if="successMessage" class="text-success">Reflection saved!</span>
+            </div>
           </div>
 
         </div>

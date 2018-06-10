@@ -59,7 +59,7 @@ function getActorEmail() {
         actorEmail = tincan.actor.mbox;
     }
     else {
-        actorEmail = "mailto:ryan@efrontlearning.com";
+        actorEmail = "mailto:ryand@efrontlearning.com";
     }
     return actorEmail;
 }
@@ -117,12 +117,15 @@ window.onload = function () {
             el: '#contentPanel',
             data: {
                 name: actorName,
-                selectedModule: [],
+                selectedModule: { text: 'How to Build a Superteam', value: 'htbas' },
                 date: today.toLocaleDateString(),
                 message: "",
                 reflections: [],
+                loading: true,
+                loadingTable: true,
+                successMessage: false,
                 modules: [
-                    { text: 'Build a collaborative team', value: 'bact' },
+                    { text: 'How to Build a Superteam', value: 'htbas' },
                     { text: 'Let people know you care', value: 'lpkyc' },
                     { text: 'Help your people to succeed', value: 'hypts' },
                     { text: 'Do the right thing', value: 'dtrt' },
@@ -132,68 +135,68 @@ window.onload = function () {
         mounted: function () {
             returnAllReflectionsPromise().then(function (value) {
                 vm.reflections = parseTincanJson(value);
-                console.log(vm.reflections);
+                vm.loadingTable = false;
             });
+            this.loading = false;
             },
             computed: {
                 reflections: function () {
                     returnAllReflectionsPromise().then(function (value) {
-                        console.log(value);
                         return value;
                     });
-                    console.log(this);
                 },
                 topics: function () {
-                    if (this.selectedModule == "bact") {
-                        var options = [
-                            { text: "Story Time: The Sound of the Forest", value: "1" },
-                            { text: "How to Build a Happy & Engaged Team", value: "2" },
-                            { text: "Know Me: Team Assessment", value: "3" },
-                            { text: "How to Recognise Team Dysfunctions", value: "4" },
-                            { text: "How to Deal with Team Dysfunctions", value: "5" },
-                            { text: "Know Me: So, Am I Trustworthy?", value: "6" },
-                            { text: "Lessons from the SAS", value: "7" },
-                            { text: "How to Manage Conflict in the Team", value: "8" },
-                            { text: "Know Me: So, Do I Need a team", value: "9" },
-                            { text: "Stages of Team Development", value: "10" },
-                            { text: "Quiz: On Team Development", value: "11" },
-                            { text: "Lessons from the Rolling Stones", value: "12" },
-                            { text: "Teamwork by Design", value: "13" },
-                            { text: "Too much, too little, too late", value: "14" },
-                            { text: "Groupthink", value: "15" },
-                            { text: "Quiz: Team Roles", value: "16" },
-                            { text: "How to Make Virtual Teams Work", value: "17" },
-                            { text: "On Being a Good Team Leader", value: "18" },
-                            { text: "How Would You Deal With This Situation", value: "19" },
-                            { text: "Story Time: Is there a Mouse in Your Team?", value: "20" },
+                    var options = [
+                        { text: "Story Time: The Sound of the Forest", value: "1" },
+                        { text: "How to Build a Happy & Engaged Team", value: "2" },
+                        { text: "Know Me: Team Assessment", value: "3" },
+                        { text: "How to Recognise Team Dysfunctions", value: "4" },
+                        { text: "How to Deal with Team Dysfunctions", value: "5" },
+                        { text: "Know Me: So, Am I Trustworthy?", value: "6" },
+                        { text: "Lessons from the SAS", value: "7" },
+                        { text: "How to Manage Conflict in the Team", value: "8" },
+                        { text: "Know Me: So, Do I Need a team", value: "9" },
+                        { text: "Stages of Team Development", value: "10" },
+                        { text: "Quiz: On Team Development", value: "11" },
+                        { text: "Lessons from the Rolling Stones", value: "12" },
+                        { text: "Teamwork by Design", value: "13" },
+                        { text: "Too much, too little, too late", value: "14" },
+                        { text: "Groupthink", value: "15" },
+                        { text: "Quiz: Team Roles", value: "16" },
+                        { text: "Making Virtual Teams Work", value: "17" },
+                        { text: "On Being a Good Team Leader", value: "18" },
+                        { text: "How Would You Deal With This Situation", value: "19" },
+                        { text: "Know Me: Team Roles", value: "20" },
+                        { text: "The Enormous Turnip", value: "21" },
 
-                        ];
-                    }
-                    else if (this.selectedModule == "lpkyc") {
-                        var options = [{ text: "Test Course", value: "111" },
-                            { text: "Test Course2123", value: "222" },
-                            { text: "Test Course332", value: "342" },
-                            { text: "Test Course4123", value: "344" },
-                            { text: "Test Course5123", value: "555" },
-                            { text: "Test Course6123", value: "653" },
-                            { text: "Test Course73", value: "751" },];
-                    }
+                    ];
                     return options
 
                 }
             },
             methods: {
+                goToBottom: function () {
+                    $("html, body").animate({ scrollTop: $(document).height() }, "slow");
+                },
                 submit: function (event) {
-                    console.log(this.message);
-                    buildAndSendReflectionStatement(this.selectedModule, this.selectedTopic, this.message);
+                    this.loadingTable = true;
+                    this.successMessage = false;
+                    buildAndSendReflectionStatement(this.selectedModule.value, this.selectedTopic, this.message);
+                    this.successMessage = true;
+                    setTimeout(function () {
+                        vm.successMessage = false;
+                    }, 2000);
                     returnAllReflectionsPromise().then(function (value) {
                         vm.reflections = parseTincanJson(value);
+                        vm.loadingTable = false;
                     });
-
+                    sendEndStatement();
                 },
                 getandsetreflection: function () {
-                    returnRefPromise(this.selectedModule, this.selectedTopic).then(function (value) {
+                    this.loading = true;
+                    returnRefPromise(this.selectedModule.value, this.selectedTopic).then(function (value) {
                         vm.message = value;
+                        vm.loading = false;
                     });
                 }
 
@@ -202,6 +205,35 @@ window.onload = function () {
         }
     );
 
+    function sendEndStatement() {
+        var endStatement = new TinCan.Statement({
+            actor: {
+                name: actorName,
+                mbox: actorEmail
+            },
+            verb: {
+                id: "http://adlnet.gov/expapi/verbs/completed",
+                display: {
+                    "en-US": "completed"
+                }
+            },
+            object: {
+                id: ROOT_ACTIVITY_ID
+            },
+            result: {
+                completion: true,
+                success: true,
+                score: {
+                    scaled: 0.0,
+                    raw: 0,
+                    min: 0,
+                    max: 0
+                },
+                duration: "PT0H0M2S"
+            }
+        });
+        signalStatement(endStatement);
+    }
     function parseTincanJson(obj) {
         var reflection = [];
         for (var i = 0; i < obj.length; i++) {
@@ -220,7 +252,7 @@ window.onload = function () {
 
     function getModuleFromShortCode(code) {
         var modules = {
-            "bact": "Build a collaborative team",
+            "htbas": "How to Build a Superteam",
             "lpkyc": "Let people know you care",
             "hypts": "Help your people to succeed",
             "dtrt": "Do the right thing"
@@ -250,7 +282,8 @@ window.onload = function () {
             "17": "How to Make Virtual Teams Work",
             "18": "On Being a Good Team Leader",
             "19": "How Would You Deal With This Situation",
-            "20": "Story Time: Is there a Mouse in Your Team?",
+            "20": "Know Me: Team Roles",
+            "21": "The Enormous Turnip",
         };
         return topics[id];
     }
