@@ -20,8 +20,8 @@ function getLrs() {
         returnme = new TinCan.LRS(
             {
                 endpoint: "https://cloud.scorm.com/tc/JYFUW991B4/",
-                username: "chgm3Ilb9S33LDPYkDg",
-                password: "5Xuy9z0SHCOkmTCG4r8",
+                username: "",
+                password: "",
                 allowFail: false
             }
         );
